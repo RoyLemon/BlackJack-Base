@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c4gchqx4g4lo6"]
+
+[ext_resource type="Script" uid="uid://d0rongjwkpt0r" path="res://Scripts/card_base.gd" id="1_wf8id"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eumee"]
+size = Vector2(80, 128)
+
+[node name="Card" type="Area2D" unique_id=894876546]
+script = ExtResource("1_wf8id")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1076798539]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1352546284]
+shape = SubResource("RectangleShape2D_eumee")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://qfcj1eco3tau"]
+
+[ext_resource type="Texture2D" uid="uid://d06e7bkny88cj" path="res://Sprites/Clubs/Sprite-0009.png" id="1_4qeib"]
+[ext_resource type="Script" uid="uid://uce68jkwgjjd" path="res://Resources/DataCard.gd" id="1_hnw02"]
+
+[resource]
+script = ExtResource("1_hnw02")
+card_id = 8
+front_sprite = ExtResource("1_4qeib")
+metadata/_custom_type_script = "uid://uce68jkwgjjd"
