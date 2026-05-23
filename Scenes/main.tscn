@@ -1,8 +1,97 @@
 [gd_scene format=3 uid="uid://buv72q3blvdx"]
 
-[ext_resource type="PackedScene" uid="uid://c4gchqx4g4lo6" path="res://Scenes/card.tscn" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://bjdfbjxif78dn" path="res://Scripts/CardManager.gd" id="1_hdf80"]
+[ext_resource type="Script" uid="uid://uce68jkwgjjd" path="res://Resources/DataCard.gd" id="2_jwpg7"]
+[ext_resource type="Resource" uid="uid://7vuum4t6anps" path="res://Resources/tres/Clubs/clubs_a.tres" id="3_k2e45"]
+[ext_resource type="Resource" uid="uid://dauddelgfiqkx" path="res://Resources/tres/Clubs/clubs_two.tres" id="4_536cc"]
+[ext_resource type="Resource" uid="uid://d0nev8uv31cto" path="res://Resources/tres/Clubs/clubs_three.tres" id="5_aqgau"]
+[ext_resource type="Resource" uid="uid://chkxdmmgy8487" path="res://Resources/tres/Clubs/clubs_four.tres" id="6_8cuat"]
+[ext_resource type="Resource" uid="uid://gfcx5pwcuqij" path="res://Resources/tres/Clubs/clubs_five.tres" id="7_o1aky"]
+[ext_resource type="Resource" uid="uid://dmaw3ri6xclxq" path="res://Resources/tres/Clubs/clubs_six.tres" id="8_kwxat"]
+[ext_resource type="Resource" uid="uid://bncg1nw87sby8" path="res://Resources/tres/Clubs/clubs_seven.tres" id="9_aa8k8"]
+[ext_resource type="Resource" uid="uid://cljarjnk7jybo" path="res://Resources/tres/Clubs/clus_eight.tres" id="10_kqrg6"]
+[ext_resource type="Resource" uid="uid://qfcj1eco3tau" path="res://Resources/tres/Clubs/clubs_nine.tres" id="11_nwwfm"]
+[ext_resource type="Resource" uid="uid://bi86b4526ktns" path="res://Resources/tres/Clubs/clubs_ten.tres" id="12_s8vy0"]
+[ext_resource type="Resource" uid="uid://cjmcyccfevg1d" path="res://Resources/tres/Clubs/clubs_joker.tres" id="13_jut3y"]
+[ext_resource type="Resource" uid="uid://bg3ang3d72l5d" path="res://Resources/tres/Clubs/clubs_queen.tres" id="14_v2nl5"]
+[ext_resource type="Resource" uid="uid://b174gg1k2r806" path="res://Resources/tres/Clubs/clubs_king.tres" id="15_dmskm"]
+[ext_resource type="Resource" uid="uid://keuwxo0f1my4" path="res://Resources/tres/Diamonds/diamond_a.tres" id="16_xdkp6"]
+[ext_resource type="Resource" uid="uid://ctlai31hyj1lr" path="res://Resources/tres/Diamonds/diamond_two.tres" id="17_54nrm"]
+[ext_resource type="Resource" uid="uid://bsit4ronx45hv" path="res://Resources/tres/Diamonds/diamond_three.tres" id="18_55jeb"]
+[ext_resource type="Resource" uid="uid://vk1a7h3arvj0" path="res://Resources/tres/Diamonds/diamond_four.tres" id="19_gsvbx"]
+[ext_resource type="Resource" uid="uid://bwwkete5ofwdf" path="res://Resources/tres/Diamonds/diamond_five.tres" id="20_bv80c"]
+[ext_resource type="Resource" uid="uid://durucp33s1ki1" path="res://Resources/tres/Diamonds/diamond_six.tres" id="21_ptfg5"]
+[ext_resource type="Resource" uid="uid://nokob2ttv58w" path="res://Resources/tres/Diamonds/diamond_seven.tres" id="22_2daye"]
+[ext_resource type="Resource" uid="uid://bobw05uxrfhni" path="res://Resources/tres/Diamonds/diamond_eight.tres" id="23_1semv"]
+[ext_resource type="Resource" uid="uid://ww5w7537hgbk" path="res://Resources/tres/Diamonds/diamond_nine.tres" id="24_2060n"]
+[ext_resource type="Resource" uid="uid://cj7d1bienuk3b" path="res://Resources/tres/Diamonds/diamond_ten.tres" id="25_6ml46"]
+[ext_resource type="Resource" uid="uid://cxd16idk4yj52" path="res://Resources/tres/Diamonds/diamond_joker.tres" id="26_qax2n"]
+[ext_resource type="Resource" uid="uid://b3q7ter7txyco" path="res://Resources/tres/Diamonds/diamond_queen.tres" id="27_y86h7"]
+[ext_resource type="Resource" uid="uid://4bbn5fd1ny0d" path="res://Resources/tres/Diamonds/diamond_king.tres" id="28_my4ki"]
+[ext_resource type="Resource" uid="uid://dn4et6eahb2ni" path="res://Resources/tres/Hearts/heart_a.tres" id="29_lx3vj"]
+[ext_resource type="Resource" uid="uid://d4cmtqbfitnlx" path="res://Resources/tres/Hearts/heart_two.tres" id="30_ynmfv"]
+[ext_resource type="Resource" uid="uid://cdl64hlsu2wu0" path="res://Resources/tres/Hearts/heart_three.tres" id="31_cblf0"]
+[ext_resource type="Resource" uid="uid://c80s3p20mylm1" path="res://Resources/tres/Hearts/hearth_four.tres" id="32_nay3j"]
+[ext_resource type="Resource" uid="uid://diyexlkm15xmn" path="res://Resources/tres/Hearts/heart_five.tres" id="33_ovafv"]
+[ext_resource type="Resource" uid="uid://bi5alqftadikd" path="res://Resources/tres/Hearts/heart_six.tres" id="34_owhal"]
+[ext_resource type="Resource" uid="uid://2mjqqhnau3l4" path="res://Resources/tres/Hearts/heart_seven.tres" id="35_uv6w5"]
+[ext_resource type="Resource" uid="uid://6ylfp1rtsf5h" path="res://Resources/tres/Hearts/heart_eight.tres" id="36_r7bbj"]
+[ext_resource type="Resource" uid="uid://bpx82787c654g" path="res://Resources/tres/Hearts/heart_nine.tres" id="37_gsvbx"]
+[ext_resource type="Resource" uid="uid://thp7sarcquf7" path="res://Resources/tres/Hearts/heart_ten.tres" id="38_bv80c"]
+[ext_resource type="Resource" uid="uid://dit167q4q5ten" path="res://Resources/tres/Hearts/heart_joker.tres" id="39_ptfg5"]
+[ext_resource type="Resource" uid="uid://cyvjflgf23n8a" path="res://Resources/tres/Hearts/heart_queen.tres" id="40_2daye"]
+[ext_resource type="Resource" uid="uid://g4pthcj8i6o3" path="res://Resources/tres/Hearts/heart_king.tres" id="41_1semv"]
+[ext_resource type="Resource" uid="uid://c3rawtn0wdcpd" path="res://Resources/tres/Spades/spade_a.tres" id="42_2060n"]
+[ext_resource type="Resource" uid="uid://dvwh76h0k4xs5" path="res://Resources/tres/Spades/spade_two.tres" id="43_6ml46"]
+[ext_resource type="Resource" uid="uid://fjsf3w8cv447" path="res://Resources/tres/Spades/spade_three.tres" id="44_qax2n"]
+[ext_resource type="Resource" uid="uid://7xda2k76lls0" path="res://Resources/tres/Spades/spade_four.tres" id="45_y86h7"]
+[ext_resource type="Resource" uid="uid://crlclbcfknuid" path="res://Resources/tres/Spades/spade_five.tres" id="46_my4ki"]
+[ext_resource type="Resource" uid="uid://bhoykrxenilff" path="res://Resources/tres/Spades/spade_six.tres" id="47_lx3vj"]
+[ext_resource type="Resource" uid="uid://dm7dgby23weqt" path="res://Resources/tres/Spades/spade_seven.tres" id="48_ynmfv"]
+[ext_resource type="Resource" uid="uid://mgguo1ohb14y" path="res://Resources/tres/Spades/spade_eight.tres" id="49_cblf0"]
+[ext_resource type="Resource" uid="uid://c7sswqx33n22a" path="res://Resources/tres/Spades/spade_nine.tres" id="50_nay3j"]
+[ext_resource type="Resource" uid="uid://boay71cudgn1d" path="res://Resources/tres/Spades/spade_ten.tres" id="51_ovafv"]
+[ext_resource type="Resource" uid="uid://c4ec63ig3rwcq" path="res://Resources/tres/Spades/spade_joker.tres" id="52_owhal"]
+[ext_resource type="Resource" uid="uid://rbxyt8mdwqic" path="res://Resources/tres/Spades/spade_queen.tres" id="53_uv6w5"]
+[ext_resource type="Resource" uid="uid://e0hk4j7li70g" path="res://Resources/tres/Spades/spade_king.tres" id="54_r7bbj"]
+[ext_resource type="Texture2D" uid="uid://b651pavqpdasl" path="res://FireButton_up.png" id="55_bv80c"]
 
 [node name="Main" type="Node2D" unique_id=19911781]
 
-[node name="Card" parent="." unique_id=894876546 instance=ExtResource("1_jjgbg")]
-position = Vector2(703, 797)
+[node name="Node2D" type="Node2D" parent="." unique_id=846344235]
+script = ExtResource("1_hdf80")
+all_cards = Array[ExtResource("2_jwpg7")]([ExtResource("3_k2e45"), ExtResource("4_536cc"), ExtResource("5_aqgau"), ExtResource("6_8cuat"), ExtResource("7_o1aky"), ExtResource("8_kwxat"), ExtResource("9_aa8k8"), ExtResource("10_kqrg6"), ExtResource("11_nwwfm"), ExtResource("12_s8vy0"), ExtResource("13_jut3y"), ExtResource("14_v2nl5"), ExtResource("15_dmskm"), ExtResource("16_xdkp6"), ExtResource("17_54nrm"), ExtResource("18_55jeb"), ExtResource("19_gsvbx"), ExtResource("20_bv80c"), ExtResource("21_ptfg5"), ExtResource("22_2daye"), ExtResource("23_1semv"), ExtResource("24_2060n"), ExtResource("25_6ml46"), ExtResource("26_qax2n"), ExtResource("27_y86h7"), ExtResource("28_my4ki"), ExtResource("29_lx3vj"), ExtResource("30_ynmfv"), ExtResource("31_cblf0"), ExtResource("32_nay3j"), ExtResource("33_ovafv"), ExtResource("34_owhal"), ExtResource("35_uv6w5"), ExtResource("36_r7bbj"), ExtResource("37_gsvbx"), ExtResource("38_bv80c"), ExtResource("39_ptfg5"), ExtResource("40_2daye"), ExtResource("41_1semv"), ExtResource("42_2060n"), ExtResource("43_6ml46"), ExtResource("44_qax2n"), ExtResource("45_y86h7"), ExtResource("46_my4ki"), ExtResource("47_lx3vj"), ExtResource("48_ynmfv"), ExtResource("49_cblf0"), ExtResource("50_nay3j"), ExtResource("51_ovafv"), ExtResource("52_owhal"), ExtResource("53_uv6w5"), ExtResource("54_r7bbj")])
+
+[node name="Control" type="Control" parent="." unique_id=1663974649]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 647.0
+
+[node name="StandButtom" type="Button" parent="Control" unique_id=1154965737]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -17.5
+offset_right = -192.0
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+icon = ExtResource("55_bv80c")
+
+[node name="TakeButtom" type="Button" parent="Control" unique_id=2075340156]
+layout_mode = 0
+offset_left = 655.0
+offset_top = 311.0
+offset_right = 679.0
+offset_bottom = 335.0
+scale = Vector2(4, 4)
+icon = ExtResource("55_bv80c")
+
+[connection signal="pressed" from="Control/StandButtom" to="Node2D" method="_on_stand_buttom_pressed"]
+[connection signal="pressed" from="Control/TakeButtom" to="Node2D" method="_on_take_buttom_pressed"]
