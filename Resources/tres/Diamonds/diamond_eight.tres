@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://bobw05uxrfhni"]
+
+[ext_resource type="Script" uid="uid://uce68jkwgjjd" path="res://Resources/DataCard.gd" id="1_nn2r5"]
+[ext_resource type="Texture2D" uid="uid://dghn3grcek3cf" path="res://Sprites/BackCards - Bar/BackCard - Bar.png" id="1_qcpfr"]
+[ext_resource type="Texture2D" uid="uid://c4b5ugsacebvr" path="res://Sprites/Diamond/Sprite-0009.png" id="2_6fv6c"]
+
+[resource]
+script = ExtResource("1_nn2r5")
+card_type = 1
+card_id = 7
+back_sprite = ExtResource("1_qcpfr")
+front_sprite = ExtResource("2_6fv6c")
+metadata/_custom_type_script = "uid://uce68jkwgjjd"

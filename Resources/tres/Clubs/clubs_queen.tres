@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://uce68jkwgjjd" path="res://Resources/DataCard.gd" id="1_3ffvv"]
 [ext_resource type="Texture2D" uid="uid://bccb0l3rvecic" path="res://Sprites/Clubs/Sprite-0012.png" id="1_nl0i7"]
+[ext_resource type="Texture2D" uid="uid://dghn3grcek3cf" path="res://Sprites/BackCards - Bar/BackCard - Bar.png" id="1_vn454"]
 
 [resource]
 script = ExtResource("1_3ffvv")
 card_id = 11
+back_sprite = ExtResource("1_vn454")
 front_sprite = ExtResource("1_nl0i7")
 metadata/_custom_type_script = "uid://uce68jkwgjjd"

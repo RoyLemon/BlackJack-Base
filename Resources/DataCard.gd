@@ -49,7 +49,6 @@ func update_value():
 		_:
 			card_value = 10
 
-
 @export var card_type: CardType
 @export var card_id: CardID:
 	set(value):

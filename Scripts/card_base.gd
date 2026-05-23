@@ -5,6 +5,5 @@ var data: CardData
 # Components
 @onready var sprite : Sprite2D = $Sprite2D
 
-var value = data.card_value
-var id = data.card_id
-var front_sprite = data.front_sprite
+func _ready() -> void:
+	sprite.texture = data.back_sprite
