@@ -1,8 +1,14 @@
 extends Node2D
+class_name CardManager
 
 # Variables
 var player_take_card: bool = false
 var dealer_take_card: bool = false
+
+var player_max_health: int = 100
+var dealer_max_health: int = 100
+var player_actual_healt: int = 100
+var dealer_actual_health: int = 100
 
 # Const
 const MAX_VALUE = 21
@@ -34,6 +40,7 @@ func start_round() -> void:
 		player_hand.append(deck.pop_front())
 		dealer_hand.append(deck.pop_front())
 # START GAME REGIN - END
+
 
 # CALCULATE GAME REGION - START
 func _on_take_buttom_pressed() -> void:
@@ -87,57 +94,72 @@ func check_winner(p_hand: Array[CardData], d_hand: Array[CardData]):
 	
 	# Bust (>21)
 	if (player_value > MAX_VALUE): 
-		print("Dealer Gana!")
-		print("Player: " + str(player_value), " Dealer: " + str(dealer_value))
+		player_actual_healt -= dealer_value
+		if (check_game_over()): return
 		start_new_round()
 		return
 
 	if (dealer_value > MAX_VALUE): 
-		print("Player Gana!")
-		print("Player: " + str(player_value), " Dealer: " + str(dealer_value))
+		dealer_actual_health -= player_value
+		if (check_game_over()): return
 		start_new_round()
 		return
 	
 	# BlackJack Exacto
 	if (player_value == MAX_VALUE): 
-		print("Player Gana!")
-		print("Player: " + str(player_value), " Dealer: " + str(dealer_value))
+		dealer_actual_health -= MAX_VALUE
+		if (check_game_over()): return
 		start_new_round()
 		return
 	
 	if (dealer_value == MAX_VALUE): 
-		print("Dealer Gana!")
-		print("Player: " + str(player_value), " Dealer: " + str(dealer_value))
+		player_actual_healt -= MAX_VALUE
+		if (check_game_over()): return
 		start_new_round()
 		return
 	
 	# Comparacion Normal
 	if (dealer_value > player_value): 
-		print("Dealer Gana!")
-		print("Player: " + str(player_value), " Dealer: " + str(dealer_value))
+		player_actual_healt -= dealer_value - player_value
+		if (check_game_over()): return
 		start_new_round()
 		return
 		
 	if (player_value > dealer_value): 
-		print("Player Gana!")
-		print("Player: " + str(player_value), " Dealer: " + str(dealer_value))
+		dealer_actual_health -= player_value - dealer_value
+		if (check_game_over()): return
 		start_new_round()
 		return
 	
 	# Empate
 	if (dealer_value == player_value): 
-		print("EMPATE!")
-		print("Player: " + str(player_value), " Dealer: " + str(dealer_value))
+		if (check_game_over()): return
 		start_new_round()
 		return
 	
 	print("Se esta omitiendo algun caso")
-
+# Calculate Game Region - End
 
 # Restart Game Region - Start
 func start_new_round() -> void:
+	print ("Nuevo round")
 	deck.clear()
 	player_hand.clear()
 	dealer_hand.clear()
 	create_deck()
 	start_round()
+
+func check_game_over():
+	if (player_actual_healt <= 0 and dealer_actual_health <= 0):
+		print ("Game Over, Empate")
+		
+		return true
+	
+	if (player_actual_healt <= 0):
+		print("Game Over, Perdistes")
+		return true
+	
+	if (dealer_actual_health <= 0):
+		print("Ganastes!")
+		return true
+	return false
