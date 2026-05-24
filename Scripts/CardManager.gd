@@ -33,7 +33,6 @@ var deck: Array = []
 @onready var player_deck_position: Marker2D = $"../Markers/PlayerDeck"
 @onready var dealer_deck_position: Marker2D = $"../Markers/DealerDeck"
 
-
 func _ready() -> void:
 	create_deck()
 	start_round()
@@ -62,7 +61,6 @@ func start_round() -> void:
 	player_hand.append(player_card)
 		
 	if deck.is_empty(): return
-		
 	var dealer_card = deck.pop_back()
 	var d_offset = Vector2(dealer_hand.size() * 100, 0)
 	dealer_card.position = dealer_deck_position.position + d_offset
@@ -105,6 +103,7 @@ func player_play(hand: Array) -> void:
 	var tween = create_tween()
 	var offset = Vector2(hand.size() * 100, 0)
 	tween.tween_property(card, "position", player_deck_position.position + offset, 0.15)
+	tween.tween_callback(card.flip_card)
 	hand.append(card)
 	if calculate_hand_value(hand) >= MAX_VALUE:
 		player_take_card = false
@@ -116,6 +115,7 @@ func dealer_play(hand: Array) -> void:
 		var tween = create_tween()
 		var offset = Vector2(hand.size() * 100, 0)
 		tween.tween_property(card, "position", dealer_deck_position.position + offset, 0.15)
+		tween.tween_callback(card.flip_card)
 		hand.append(card)
 	dealer_take_card = false
 

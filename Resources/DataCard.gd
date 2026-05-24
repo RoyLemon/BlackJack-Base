@@ -54,5 +54,6 @@ func update_value():
 	set(value):
 		card_id = value
 		update_value()
+@export var card_effect: CardEffect
 @export var back_sprite: Texture2D
 @export var front_sprite: Texture2D

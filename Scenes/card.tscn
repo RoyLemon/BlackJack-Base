@@ -5,6 +5,28 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eumee"]
 size = Vector2(80, 128)
 
+[sub_resource type="Animation" id="Animation_0qqmn"]
+resource_name = "flip"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"flip_card"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wf8id"]
+_data = {
+&"flip": SubResource("Animation_0qqmn")
+}
+
 [node name="Card" type="Area2D" unique_id=894876546]
 script = ExtResource("1_wf8id")
 
@@ -12,3 +34,6 @@ script = ExtResource("1_wf8id")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1352546284]
 shape = SubResource("RectangleShape2D_eumee")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1673747098]
+libraries/ = SubResource("AnimationLibrary_wf8id")
