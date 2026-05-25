@@ -116,6 +116,26 @@ text = "Player:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label" type="Label" parent="CanvasLayer/PlayerHealthBar" unique_id=122921292]
+layout_mode = 0
+offset_left = -43.0
+offset_top = 45.0
+offset_right = 52.0
+offset_bottom = 70.0
+text = "Stand"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/PlayerHealthBar" unique_id=1481884341]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 43.0
+offset_right = 220.0
+offset_bottom = 68.0
+text = "Ask"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="DealerHealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=546205041 node_paths=PackedStringArray("dealer")]
 offset_left = 800.0
 offset_top = 225.0
