@@ -4,7 +4,7 @@ class_name CardData
 var card_value: int = 0
 
 enum CardID {
-	A,
+	NULL,
 	TWO,
 	THREE,
 	FOUR,
@@ -16,7 +16,8 @@ enum CardID {
 	TEN,
 	JOKER,
 	QUEEN,
-	KING
+	KING,
+	ACE
 }
 
 enum CardType {
@@ -28,8 +29,6 @@ enum CardType {
 
 func update_value():
 	match card_id:
-		CardID.A:
-			card_value = 11
 		CardID.TWO:
 			card_value = 2
 		CardID.THREE:
@@ -46,8 +45,16 @@ func update_value():
 			card_value = 8
 		CardID.NINE:
 			card_value = 9
-		_:
+		CardID.TEN:
 			card_value = 10
+		CardID.JOKER:
+			card_value = 10
+		CardID.QUEEN:
+			card_value = 10
+		CardID.KING:
+			card_value = 10
+		CardID.ACE:
+			card_value = 11
 
 @export var card_type: CardType
 @export var card_id: CardID:

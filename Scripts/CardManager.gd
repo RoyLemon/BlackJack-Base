@@ -20,7 +20,7 @@ const MIN_STAY_VALUE := 16
 const FIRST_TWO_CARDS_PER_GAME := 2
 
 # Export
-@export var all_cards: Array[CardData]
+@export var all_cards: Array = []
 @export var card_scene: PackedScene
 
 # Arrays (guardan nodos carta)
@@ -122,7 +122,7 @@ func dealer_play(hand: Array) -> void:
 
 
 func calculate_hand_value(hand: Array) -> int:
-	var total_value := 0
+	var total_value = 0
 	
 	for card in hand:
 		total_value += card.data.card_value
