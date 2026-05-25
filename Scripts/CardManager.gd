@@ -57,6 +57,7 @@ func start_round() -> void:
 	if deck.is_empty(): return
 	var player_card = deck.pop_back()
 	var p_offset = Vector2(player_hand.size() * 100, 0)
+	player_card.sprite.texture = player_card.data.front_sprite
 	player_card.position = player_deck_position.position + p_offset
 	player_hand.append(player_card)
 		
