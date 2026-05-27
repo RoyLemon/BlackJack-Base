@@ -14,6 +14,10 @@ config/name="BlackJack Base"
 run/main_scene="uid://buv72q3blvdx"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 
+[autoload]
+
+GameData="*uid://ccpgyya2xxahh"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
