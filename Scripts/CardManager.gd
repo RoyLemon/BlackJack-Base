@@ -1,11 +1,8 @@
 extends Node2D
 class_name CardManager
 
-# VARIABLES
-
 # Turnos
 var player_take_card: bool = false
-var dealer_take_card: bool = false
 
 # Health
 var player_max_health: int = 100
@@ -16,11 +13,11 @@ var dealer_actual_health: int = 100
 
 # Const
 const MAX_VALUE := 21
-const MIN_STAY_VALUE := 16
+const MIN_STAY_VALUE := 17
 const FIRST_TWO_CARDS_PER_GAME := 2
 
 # Export
-@export var all_cards: Array = []
+@export var all_cards: Array[CardData] = []
 @export var card_scene: PackedScene
 
 # Arrays (guardan nodos carta)
@@ -33,13 +30,18 @@ var deck: Array = []
 @onready var player_deck_position: Marker2D = $"../Markers/PlayerDeck"
 @onready var dealer_deck_position: Marker2D = $"../Markers/DealerDeck"
 
+# Labels
+@onready var player_score: Label = $"../CanvasLayer/PlayerHealthBar/Player"
+@onready var dealer_score: Label = $"../CanvasLayer/DealerHealthBar/Dealer"
+
 func _ready() -> void:
 	create_deck()
-	start_round()
+
+func _process(delta: float) -> void:
+	hands_labels()
 
 
 # START GAME REGION
-
 func create_deck() -> void:
 	deck.clear()
 	
@@ -53,48 +55,27 @@ func create_deck() -> void:
 		deck.append(card_instance)
 
 
-func start_round() -> void:
-	if deck.is_empty(): return
-	var player_card = deck.pop_back()
-	var p_offset = Vector2(player_hand.size() * 100, 0)
-	player_card.sprite.texture = player_card.data.front_sprite
-	player_card.position = player_deck_position.position + p_offset
-	player_hand.append(player_card)
-		
-	if deck.is_empty(): return
-	var dealer_card = deck.pop_back()
-	var d_offset = Vector2(dealer_hand.size() * 100, 0)
-	dealer_card.position = dealer_deck_position.position + d_offset
-	dealer_hand.append(dealer_card)
-
-
 # BUTTONS
 func _on_take_buttom_pressed() -> void:
 	player_take_card = true
-	dealer_take_card = false
 	deal_cards()
 
 func _on_stand_buttom_pressed() -> void:
 	player_take_card = false
-	dealer_take_card = true
 	deal_cards()
 
 # GAMEPLAY
 func deal_cards() -> void:
 	if deck.is_empty():
 		return
-
-	# Player turn
+	
+	# Player turno
 	if player_take_card:
 		player_play(player_hand)
-		if calculate_hand_value(player_hand) >= MAX_VALUE:
-			check_winner(player_hand, dealer_hand)
-
-	# Dealer turn
-	if dealer_take_card:
+	
+	if !player_take_card:
 		dealer_play(dealer_hand)
-		check_winner(player_hand, dealer_hand)
-
+		
 
 func player_play(hand: Array) -> void:
 	if deck.is_empty():
@@ -106,8 +87,6 @@ func player_play(hand: Array) -> void:
 	tween.tween_property(card, "position", player_deck_position.position + offset, 0.15)
 	tween.tween_callback(card.flip_card)
 	hand.append(card)
-	if calculate_hand_value(hand) >= MAX_VALUE:
-		player_take_card = false
 
 
 func dealer_play(hand: Array) -> void:
@@ -115,15 +94,17 @@ func dealer_play(hand: Array) -> void:
 		var card = deck.pop_front()
 		var tween = create_tween()
 		var offset = Vector2(hand.size() * 100, 0)
-		tween.tween_property(card, "position", dealer_deck_position.position + offset, 0.15)
+		tween.tween_property(card, "position", dealer_deck_position.position - offset, 0.15)
 		tween.tween_callback(card.flip_card)
+		await get_tree().create_timer(0.25).timeout
 		hand.append(card)
-	dealer_take_card = false
+	
+	await get_tree().create_timer(1).timeout
+	check_winner(player_hand, dealer_hand)
 
 
 func calculate_hand_value(hand: Array) -> int:
 	var total_value = 0
-	
 	for card in hand:
 		total_value += card.data.card_value
 	return total_value
@@ -132,11 +113,13 @@ func calculate_hand_value(hand: Array) -> int:
 func check_winner(p_hand: Array, d_hand: Array) -> void:
 	var player_value := calculate_hand_value(p_hand)
 	var dealer_value := calculate_hand_value(d_hand)
-
-	print("Player:", player_value)
-	print("Dealer:", dealer_value)
+	
 
 	# BUST (>21)
+	if ((player_value > MAX_VALUE) and (dealer_value > MAX_VALUE)):
+		start_new_round()
+		return
+	
 	if player_value > MAX_VALUE:
 		player_actual_health -= dealer_value
 		if check_game_over(): return
@@ -150,14 +133,18 @@ func check_winner(p_hand: Array, d_hand: Array) -> void:
 		return
 
 	# BLACKJACK EXACTO
+	if ((player_value == MAX_VALUE) and (dealer_value == MAX_VALUE)):
+		start_new_round()
+		return
+	
 	if player_value == MAX_VALUE and dealer_value != MAX_VALUE:
-		dealer_actual_health -= MAX_VALUE
+		dealer_actual_health -= (MAX_VALUE - dealer_value)
 		if check_game_over(): return
 		start_new_round()
 		return
 
 	if dealer_value == MAX_VALUE and player_value != MAX_VALUE:
-		player_actual_health -= MAX_VALUE
+		player_actual_health -= (MAX_VALUE - player_value)
 		if check_game_over(): return
 		start_new_round()
 		return
@@ -172,7 +159,7 @@ func check_winner(p_hand: Array, d_hand: Array) -> void:
 	if player_value > dealer_value:
 		dealer_actual_health -= (player_value - dealer_value)
 		if check_game_over(): return
-		start_new_round() 
+		start_new_round()
 		return
 
 	# EMPATE
@@ -182,16 +169,11 @@ func check_winner(p_hand: Array, d_hand: Array) -> void:
 		start_new_round()
 		return
 
-# CASO EXTRA
-	print("Se está omitiendo algún caso")
-
 
 # RESTART GAME REGION
 func start_new_round() -> void:
 	print("Nuevo round")
-
 	player_take_card = false
-	dealer_take_card = false
 
 	# Destruir cartas viejas
 	for card in deck:
@@ -207,7 +189,6 @@ func start_new_round() -> void:
 	player_hand.clear()
 	dealer_hand.clear()
 	create_deck()
-	start_round()
 
 
 func check_game_over() -> bool:
@@ -224,3 +205,21 @@ func check_game_over() -> bool:
 		return true
 
 	return false
+
+
+# VISUALE EFFECTS REGION - START
+func hands_labels() -> void: 
+	player_score.text = "Player: " + str(calculate_hand_value(player_hand))
+	dealer_score.text = "Dealer: " + str(calculate_hand_value(dealer_hand))
+	
+	if (calculate_hand_value(player_hand) > MAX_VALUE):
+		player_score.modulate = Color.RED
+		
+	if (calculate_hand_value(dealer_hand) > MAX_VALUE):
+		dealer_score.modulate = Color.RED
+	
+	if (calculate_hand_value(player_hand) < MAX_VALUE):
+		player_score.modulate = Color.WHITE
+		
+	if (calculate_hand_value(dealer_hand) < MAX_VALUE):
+		dealer_score.modulate = Color.WHITE

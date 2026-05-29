@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="DealerGetDamage" format=3 uid="uid://v0rxhai6eerk"]
+
+[ext_resource type="Script" uid="uid://yyji1eimkndo" path="res://Resources/Special Effects/Scripts/double_value.gd" id="1_hqs7c"]
+
+[resource]
+script = ExtResource("1_hqs7c")
+metadata/_custom_type_script = "uid://yyji1eimkndo"

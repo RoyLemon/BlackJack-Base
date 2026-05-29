@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://dit167q4q5ten"]
 
-[ext_resource type="Script" uid="uid://uce68jkwgjjd" path="res://Resources/DataCard.gd" id="1_0qggy"]
-[ext_resource type="Texture2D" uid="uid://dghn3grcek3cf" path="res://Sprites/BackCards - Bar/BackCard - Bar.png" id="1_7okny"]
-[ext_resource type="Texture2D" uid="uid://b0t7rtnsy7d2l" path="res://Sprites/Hearts/Sprite-0012.png" id="2_3mtt2"]
+[ext_resource type="Script" uid="uid://uce68jkwgjjd" path="res://Scripts/DataCard.gd" id="1_0qggy"]
+[ext_resource type="Texture2D" uid="uid://dghn3grcek3cf" path="res://Sprites/Cards/BackCards - Bar/BackCard - Bar.png" id="1_7okny"]
+[ext_resource type="Texture2D" uid="uid://b0t7rtnsy7d2l" path="res://Sprites/Cards/Hearts/Sprite-0012.png" id="2_3mtt2"]
 
 [resource]
 script = ExtResource("1_0qggy")

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://buv72q3blvdx"]
 
 [ext_resource type="Script" uid="uid://bjdfbjxif78dn" path="res://Scripts/CardManager.gd" id="1_hdf80"]
+[ext_resource type="Script" uid="uid://uce68jkwgjjd" path="res://Scripts/DataCard.gd" id="2_1semv"]
 [ext_resource type="Resource" uid="uid://7vuum4t6anps" path="res://Resources/tres/Clubs/clubs_a.tres" id="3_k2e45"]
 [ext_resource type="Resource" uid="uid://dauddelgfiqkx" path="res://Resources/tres/Clubs/clubs_two.tres" id="4_536cc"]
 [ext_resource type="Resource" uid="uid://d0nev8uv31cto" path="res://Resources/tres/Clubs/clubs_three.tres" id="5_aqgau"]
@@ -54,15 +55,18 @@
 [ext_resource type="Resource" uid="uid://rbxyt8mdwqic" path="res://Resources/tres/Spades/spade_queen.tres" id="53_uv6w5"]
 [ext_resource type="Resource" uid="uid://e0hk4j7li70g" path="res://Resources/tres/Spades/spade_king.tres" id="54_r7bbj"]
 [ext_resource type="PackedScene" uid="uid://c4gchqx4g4lo6" path="res://Scenes/card.tscn" id="55_1semv"]
-[ext_resource type="Texture2D" uid="uid://b651pavqpdasl" path="res://FireButton_up.png" id="55_bv80c"]
+[ext_resource type="PackedScene" uid="uid://dbvnv6j54eew6" path="res://Scenes/stand_buttom.tscn" id="56_2060n"]
 [ext_resource type="Script" uid="uid://dcf1r36ifvlsi" path="res://Scripts/player_health_bar.gd" id="56_ptfg5"]
 [ext_resource type="Script" uid="uid://chdm4p1bgwcjf" path="res://Scripts/dealer_health_bar.gd" id="57_2daye"]
+[ext_resource type="PackedScene" uid="uid://k2dkvud18ct2" path="res://Scenes/hit_buttom.tscn" id="57_6ml46"]
+[ext_resource type="Texture2D" uid="uid://db5bvdhw4xujj" path="res://Sprites/Buttoms/NotPressed/StandButtom.png" id="57_qax2n"]
+[ext_resource type="Texture2D" uid="uid://c3xuiwld3mnc5" path="res://Sprites/Buttoms/NotPressed/HitButtom.png" id="58_6ml46"]
 
 [node name="Main" type="Node2D" unique_id=19911781]
 
 [node name="BlackJack Logic" type="Node2D" parent="." unique_id=846344235]
 script = ExtResource("1_hdf80")
-all_cards = [ExtResource("3_k2e45"), ExtResource("4_536cc"), ExtResource("5_aqgau"), ExtResource("6_8cuat"), ExtResource("7_o1aky"), ExtResource("8_kwxat"), ExtResource("9_aa8k8"), ExtResource("10_kqrg6"), ExtResource("11_nwwfm"), ExtResource("12_s8vy0"), ExtResource("13_jut3y"), ExtResource("14_v2nl5"), ExtResource("15_dmskm"), ExtResource("16_xdkp6"), ExtResource("17_54nrm"), ExtResource("18_55jeb"), ExtResource("19_gsvbx"), ExtResource("20_bv80c"), ExtResource("21_ptfg5"), ExtResource("22_2daye"), ExtResource("23_1semv"), ExtResource("24_2060n"), ExtResource("25_6ml46"), ExtResource("26_qax2n"), ExtResource("27_y86h7"), ExtResource("28_my4ki"), ExtResource("29_lx3vj"), ExtResource("30_ynmfv"), ExtResource("31_cblf0"), ExtResource("32_nay3j"), ExtResource("33_ovafv"), ExtResource("34_owhal"), ExtResource("35_uv6w5"), ExtResource("36_r7bbj"), ExtResource("37_gsvbx"), ExtResource("38_bv80c"), ExtResource("39_ptfg5"), ExtResource("40_2daye"), ExtResource("41_1semv"), ExtResource("42_2060n"), ExtResource("43_6ml46"), ExtResource("44_qax2n"), ExtResource("45_y86h7"), ExtResource("46_my4ki"), ExtResource("47_lx3vj"), ExtResource("48_ynmfv"), ExtResource("49_cblf0"), ExtResource("50_nay3j"), ExtResource("51_ovafv"), ExtResource("52_owhal"), ExtResource("53_uv6w5"), ExtResource("54_r7bbj")]
+all_cards = Array[ExtResource("2_1semv")]([ExtResource("3_k2e45"), ExtResource("7_o1aky"), ExtResource("6_8cuat"), ExtResource("13_jut3y"), ExtResource("15_dmskm"), ExtResource("11_nwwfm"), ExtResource("14_v2nl5"), ExtResource("9_aa8k8"), ExtResource("8_kwxat"), ExtResource("12_s8vy0"), ExtResource("5_aqgau"), ExtResource("4_536cc"), ExtResource("10_kqrg6"), ExtResource("16_xdkp6"), ExtResource("23_1semv"), ExtResource("20_bv80c"), ExtResource("19_gsvbx"), ExtResource("26_qax2n"), ExtResource("28_my4ki"), ExtResource("24_2060n"), ExtResource("27_y86h7"), ExtResource("22_2daye"), ExtResource("21_ptfg5"), ExtResource("25_6ml46"), ExtResource("18_55jeb"), ExtResource("17_54nrm"), ExtResource("32_nay3j"), ExtResource("29_lx3vj"), ExtResource("36_r7bbj"), ExtResource("33_ovafv"), ExtResource("39_ptfg5"), ExtResource("41_1semv"), ExtResource("37_gsvbx"), ExtResource("40_2daye"), ExtResource("35_uv6w5"), ExtResource("34_owhal"), ExtResource("38_bv80c"), ExtResource("31_cblf0"), ExtResource("30_ynmfv"), ExtResource("42_2060n"), ExtResource("49_cblf0"), ExtResource("46_my4ki"), ExtResource("45_y86h7"), ExtResource("52_owhal"), ExtResource("54_r7bbj"), ExtResource("50_nay3j"), ExtResource("53_uv6w5"), ExtResource("48_ynmfv"), ExtResource("47_lx3vj"), ExtResource("51_ovafv"), ExtResource("44_qax2n"), ExtResource("43_6ml46")])
 card_scene = ExtResource("55_1semv")
 
 [node name="Control" type="Control" parent="." unique_id=1663974649]
@@ -71,97 +75,99 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 647.0
 
-[node name="StandButtom" type="Button" parent="Control" unique_id=1154965737]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -469.0
-offset_top = -23.5
-offset_right = -445.0
-offset_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(4, 4)
-icon = ExtResource("55_bv80c")
+[node name="Botones" type="Node2D" parent="Control" unique_id=872650831]
+position = Vector2(0, 139)
 
-[node name="TakeButtom" type="Button" parent="Control" unique_id=2075340156]
-layout_mode = 0
-offset_left = 275.0
-offset_top = 300.0
-offset_right = 299.0
-offset_bottom = 324.0
-scale = Vector2(4, 4)
-icon = ExtResource("55_bv80c")
+[node name="StandButtom" parent="Control/Botones" unique_id=825615532 instance=ExtResource("56_2060n")]
+offset_left = 452.0
+offset_top = 267.0
+offset_right = 500.0
+offset_bottom = 292.0
+scale = Vector2(5, 5)
+icon = ExtResource("57_qax2n")
+
+[node name="HitButtom" parent="Control/Botones" unique_id=961010958 instance=ExtResource("57_6ml46")]
+offset_left = 452.0
+offset_top = 150.00003
+offset_right = 500.0
+offset_bottom = 175.00003
+scale = Vector2(5, 5)
+icon = ExtResource("58_6ml46")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2058874453]
 
 [node name="PlayerHealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=680148619 node_paths=PackedStringArray("player")]
-offset_left = 150.0
-offset_top = 225.0
-offset_right = 345.0
-offset_bottom = 252.0
+offset_left = 60.0
+offset_top = 102.0
+offset_right = 255.0
+offset_bottom = 129.0
 fill_mode = 1
 script = ExtResource("56_ptfg5")
 player = NodePath("../../BlackJack Logic")
+metadata/_edit_group_ = true
 
 [node name="Player" type="Label" parent="CanvasLayer/PlayerHealthBar" unique_id=1714424953]
 layout_mode = 0
 offset_top = -43.0
 offset_right = 195.0
-text = "Player:"
-horizontal_alignment = 1
+text = "Player: "
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/PlayerHealthBar" unique_id=122921292]
-layout_mode = 0
-offset_left = -43.0
-offset_top = 45.0
-offset_right = 52.0
-offset_bottom = 70.0
-text = "Stand"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="CanvasLayer/PlayerHealthBar" unique_id=1481884341]
-layout_mode = 0
-offset_left = 125.0
-offset_top = 43.0
-offset_right = 220.0
-offset_bottom = 68.0
-text = "Ask"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/PlayerHealthBar" unique_id=35252941]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 1
+show_percentage = false
 
 [node name="DealerHealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=546205041 node_paths=PackedStringArray("dealer")]
-offset_left = 800.0
-offset_top = 225.0
-offset_right = 995.0
-offset_bottom = 252.0
+offset_left = 900.0
+offset_top = 102.0
+offset_right = 1095.0
+offset_bottom = 129.0
 script = ExtResource("57_2daye")
 dealer = NodePath("../../BlackJack Logic")
+metadata/_edit_group_ = true
 
 [node name="Dealer" type="Label" parent="CanvasLayer/DealerHealthBar" unique_id=1680918909]
 layout_mode = 0
 offset_left = 1.0
 offset_top = -32.0
 offset_right = 194.0
-text = "Dealer"
-horizontal_alignment = 1
+text = ":Dealer"
+horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/DealerHealthBar" unique_id=927838927]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/DealerHealthBar" unique_id=598427853]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false
 
 [node name="Markers" type="Node2D" parent="." unique_id=244063626]
 
 [node name="Deck Marker" type="Marker2D" parent="Markers" unique_id=930347415]
-position = Vector2(550, 300)
+position = Vector2(571, 171)
 
 [node name="PlayerDeck" type="Marker2D" parent="Markers" unique_id=257890567]
-position = Vector2(240, 500)
+position = Vector2(81, 227)
 
 [node name="DealerDeck" type="Marker2D" parent="Markers" unique_id=1121194285]
-position = Vector2(900, 500)
+position = Vector2(1070, 227)
 
-[connection signal="pressed" from="Control/StandButtom" to="BlackJack Logic" method="_on_stand_buttom_pressed"]
-[connection signal="pressed" from="Control/TakeButtom" to="BlackJack Logic" method="_on_take_buttom_pressed"]
+[connection signal="pressed" from="Control/Botones/StandButtom" to="BlackJack Logic" method="_on_stand_buttom_pressed"]
+[connection signal="pressed" from="Control/Botones/HitButtom" to="BlackJack Logic" method="_on_take_buttom_pressed"]

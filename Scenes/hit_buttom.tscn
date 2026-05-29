@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://k2dkvud18ct2"]
+
+[ext_resource type="Script" uid="uid://m5pklja4qp46" path="res://Scripts/hit_buttom.gd" id="1_ggm4h"]
+[ext_resource type="Texture2D" uid="uid://c3xuiwld3mnc5" path="res://Sprites/Buttoms/NotPressed/HitButtom.png" id="2_lnae0"]
+[ext_resource type="Texture2D" uid="uid://bo640s8ep7jj8" path="res://Sprites/Buttoms/Pressed/HitButtomPressed.png" id="3_yk20b"]
+
+[node name="HitButtom" type="Button" unique_id=961010958]
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(8, 8)
+flat = true
+script = ExtResource("1_ggm4h")
+buttom = ExtResource("2_lnae0")
+buttom_pressed = ExtResource("3_yk20b")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

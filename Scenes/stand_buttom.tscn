@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dbvnv6j54eew6"]
+
+[ext_resource type="Script" uid="uid://fect67bqhgw3" path="res://Scripts/stand_buttom.gd" id="1_8thig"]
+[ext_resource type="Texture2D" uid="uid://db5bvdhw4xujj" path="res://Sprites/Buttoms/NotPressed/StandButtom.png" id="2_xmeqt"]
+[ext_resource type="Texture2D" uid="uid://c6h7lj4qx3p7l" path="res://Sprites/Buttoms/Pressed/StandButtomPressed.png" id="3_xmeqt"]
+
+[node name="StandButtom" type="Button" unique_id=825615532]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -528.0
+offset_bottom = -299.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(8, 8)
+flat = true
+script = ExtResource("1_8thig")
+buttom = ExtResource("2_xmeqt")
+buttom_pressed = ExtResource("3_xmeqt")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
