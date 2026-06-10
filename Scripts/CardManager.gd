@@ -96,7 +96,7 @@ func dealer_play(hand: Array) -> void:
 		var offset = Vector2(hand.size() * 100, 0)
 		tween.tween_property(card, "position", dealer_deck_position.position - offset, 0.15)
 		tween.tween_callback(card.flip_card)
-		await get_tree().create_timer(0.25).timeout
+		await get_tree().create_timer(0.35).timeout
 		hand.append(card)
 	
 	await get_tree().create_timer(1).timeout
@@ -164,7 +164,6 @@ func check_winner(p_hand: Array, d_hand: Array) -> void:
 
 	# EMPATE
 	if dealer_value == player_value:
-		print("EMPATE!")
 		if check_game_over(): return
 		start_new_round()
 		return
@@ -172,7 +171,6 @@ func check_winner(p_hand: Array, d_hand: Array) -> void:
 
 # RESTART GAME REGION
 func start_new_round() -> void:
-	print("Nuevo round")
 	player_take_card = false
 
 	# Destruir cartas viejas
@@ -184,7 +182,8 @@ func start_new_round() -> void:
 
 	for card in dealer_hand:
 		card.queue_free()
-
+	
+	
 	deck.clear()
 	player_hand.clear()
 	dealer_hand.clear()
@@ -208,18 +207,12 @@ func check_game_over() -> bool:
 
 
 # VISUALE EFFECTS REGION - START
-func hands_labels() -> void: 
-	player_score.text = "Player: " + str(calculate_hand_value(player_hand))
-	dealer_score.text = "Dealer: " + str(calculate_hand_value(dealer_hand))
+func hands_labels() -> void:
+	var pv = calculate_hand_value(player_hand)
+	var dv = calculate_hand_value(dealer_hand)
 	
-	if (calculate_hand_value(player_hand) > MAX_VALUE):
-		player_score.modulate = Color.RED
-		
-	if (calculate_hand_value(dealer_hand) > MAX_VALUE):
-		dealer_score.modulate = Color.RED
+	player_score.text = "Player: " + str(pv)
+	dealer_score.text = "Dealer: " + str(dv)
 	
-	if (calculate_hand_value(player_hand) < MAX_VALUE):
-		player_score.modulate = Color.WHITE
-		
-	if (calculate_hand_value(dealer_hand) < MAX_VALUE):
-		dealer_score.modulate = Color.WHITE
+	player_score.modulate = Color.RED if pv > MAX_VALUE else Color.WHITE
+	dealer_score.modulate = Color.RED if dv > MAX_VALUE else Color.WHITE

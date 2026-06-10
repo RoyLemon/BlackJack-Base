@@ -161,7 +161,7 @@ show_percentage = false
 [node name="Markers" type="Node2D" parent="." unique_id=244063626]
 
 [node name="Deck Marker" type="Marker2D" parent="Markers" unique_id=930347415]
-position = Vector2(571, 171)
+position = Vector2(571, 182)
 
 [node name="PlayerDeck" type="Marker2D" parent="Markers" unique_id=257890567]
 position = Vector2(81, 227)

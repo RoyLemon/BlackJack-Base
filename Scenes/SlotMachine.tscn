@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://c803vb21yvvgn"]
+
+[ext_resource type="Script" uid="uid://kvwuskg5de7v" path="res://Scripts/SlotMachine.gd" id="1_8qfso"]
+[ext_resource type="Shader" uid="uid://dtlr7t8wyy8af" path="res://Shaders/SlotMachine.gdshader" id="2_bstdy"]
+[ext_resource type="Texture2D" uid="uid://b65kig8dangux" path="res://Sprites/SlotMachineList.png" id="3_12ai4"]
+[ext_resource type="Texture2D" uid="uid://rrawen2od1k4" path="res://Sprites/Buttoms/playButtom.png" id="4_1mqkx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_12ai4"]
+shader = ExtResource("2_bstdy")
+shader_parameter/scroll_speed = 3.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1mqkx"]
+shader = ExtResource("2_bstdy")
+shader_parameter/scroll_speed = 3.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1n4jc"]
+shader = ExtResource("2_bstdy")
+shader_parameter/scroll_speed = 3.0
+shader_parameter/offset = 0.0
+
+[node name="Control" type="Control" unique_id=974954457]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8qfso")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1580466291]
+material = SubResource("ShaderMaterial_12ai4")
+layout_mode = 0
+offset_left = 501.0
+offset_top = 316.0
+offset_right = 541.0
+offset_bottom = 444.0
+texture = ExtResource("3_12ai4")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=514100461]
+material = SubResource("ShaderMaterial_1mqkx")
+layout_mode = 0
+offset_left = 546.0
+offset_top = 316.0
+offset_right = 586.0
+offset_bottom = 356.0
+texture = ExtResource("3_12ai4")
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=1914093716]
+material = SubResource("ShaderMaterial_1n4jc")
+layout_mode = 0
+offset_left = 591.0
+offset_top = 316.0
+offset_right = 631.0
+offset_bottom = 356.0
+texture = ExtResource("3_12ai4")
+
+[node name="Button" type="Button" parent="." unique_id=599235242]
+layout_mode = 0
+offset_left = 650.0
+offset_top = 363.0
+offset_right = 674.0
+offset_bottom = 388.0
+scale = Vector2(2, 2)
+icon = ExtResource("4_1mqkx")
+flat = true
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
